@@ -1,3 +1,5 @@
+using FrameworkDesign;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,35 +10,51 @@ namespace CounterApp
 {
     public class CounterViewController : MonoBehaviour
     {
-        // Start is called before the first frame update
+       
+
+       
         void Start()
         {
+
+            //注册
+            CounterModel.Count.OnValueChanged += OnCountChanged;
+
+            // Start is called before the first frame update
             transform.Find("BtnAdd").GetComponent<Button>().onClick.AddListener(() =>
             {
                 //交互逻辑
-                CounterModel.Count++;
-
-                //表现逻辑
-                UpdateView();
+                CounterModel.Count.Value++;
             });
 
             transform.Find("BtnSub").GetComponent<Button>().onClick.AddListener(() =>
             {
-                CounterModel.Count--;
-                UpdateView();
+                CounterModel.Count.Value--;
             });
 
+            OnCountChanged(CounterModel.Count.Value);
         }
 
-        void UpdateView()
+        //表现逻辑
+        private void OnCountChanged(int newCount)
         {
-            transform.Find("CountText").GetComponent<Text>().text =CounterModel.Count.ToString();
+            transform.Find("CountText").GetComponent<Text>().text = newCount.ToString();
         }
+
+        private void OnDestroy()
+        {
+            //注销
+            CounterModel.Count.OnValueChanged -= OnCountChanged;
+        }
+
     }
 
     public static class CounterModel
     {
-        public static int Count = 0;
+        public static BindableProperty<int> Count = new BindableProperty<int>()
+        {
+            Value = 0
+        };
+
     }
 }
 
