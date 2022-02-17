@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &199601105
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -278,7 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &256697193
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -554,7 +552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &379199015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -732,7 +729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &517683143
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1125,7 +1121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &968380957
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1422,7 +1417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &1340422226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1534,6 +1528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1512703301}
+  - component: {fileID: 1512703302}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -1557,6 +1552,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1512703302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512703300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c0291b06be94545b5e7ce8f43e05f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1569159904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,7 +1860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &1686878824
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1962,7 +1968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &1887131471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2071,7 +2076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &1915203573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2180,7 +2184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7bd765996150534bba723db45c3391a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePassPanel: {fileID: 1598403985}
 --- !u!65 &2070385835
 BoxCollider:
   m_ObjectHideFlags: 0

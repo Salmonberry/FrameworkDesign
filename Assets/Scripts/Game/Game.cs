@@ -20,11 +20,14 @@ namespace FrameworkDesign.Example
 
         private void OnEnmeyKilled()
         {
-            GameModel.KillCount++;
+            GameModel.KillCount.Value++;
+
+            Debug.Log(GameModel.KillCount.Value);
 
             //十个全部消灭再显示通关界面
-            if(GameModel.KillCount == 10)
+            if(GameModel.KillCount.Value == 10)
             {
+                Debug.Log("gamePass");
                 //触发游戏通关事件
                 GamePassEvent.Trigger();
             }

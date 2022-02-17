@@ -52,7 +52,7 @@ namespace CounterApp
     {
         public static BindableProperty<int> Count = new BindableProperty<int>()
         {
-            Value = 0
+            Value = 0,
         };
 
     }
