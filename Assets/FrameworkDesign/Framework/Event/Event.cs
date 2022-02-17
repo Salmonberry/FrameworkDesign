@@ -7,7 +7,7 @@ namespace FrameworkDesign
         private static Action mOnEventTrigger;
 
         /// <summary>
-        /// ×¢²áÊÂ¼þ
+        /// ×¢ï¿½ï¿½ï¿½Â¼ï¿½
         /// </summary>
         /// <param name="onEvent"></param>
         public static void Register(Action onEvent)
@@ -16,7 +16,7 @@ namespace FrameworkDesign
         }
 
         /// <summary>
-        /// ×¢ÏúÊÂ¼þ
+        /// ×¢ï¿½ï¿½ï¿½Â¼ï¿½
         /// </summary>
         /// <param name="onEvent"></param>
         public static void UnRegister(Action onEvent)
@@ -26,7 +26,7 @@ namespace FrameworkDesign
         }
 
         /// <summary>
-        /// ´¥·¢ÊÂ¼þ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         /// </summary>
         public static void Trigger()
         {

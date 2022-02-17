@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameStartPanel : MonoBehaviour
 {
     /// <summary>
-    /// EnemyµÄ¸¸½Úµã
+    /// Enemyï¿½Ä¸ï¿½ï¿½Úµï¿½
     /// </summary>
     public GameObject Enemies;
 
@@ -17,7 +17,7 @@ public class GameStartPanel : MonoBehaviour
         {
             gameObject.SetActive(false);
 
-            // ´¥·¢ÊÂ¼þ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
             GameStartEvent.Trigger();
           
         });

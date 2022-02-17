@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
 
         /// <summary>
-        /// µã»÷×Ô¼ºÔòÏú»Ù
+        /// ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
      private void OnMouseDown() {
         Destroy(gameObject);

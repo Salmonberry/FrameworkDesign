@@ -24,11 +24,11 @@ namespace FrameworkDesign.Example
 
             Debug.Log(GameModel.KillCount.Value);
 
-            //十个全部消灭再显示通关界面
+            //十锟斤拷全锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷示通锟截斤拷锟斤拷
             if(GameModel.KillCount.Value == 10)
             {
                 Debug.Log("gamePass");
-                //触发游戏通关事件
+                //锟斤拷锟斤拷锟斤拷戏通锟斤拷锟铰硷拷
                 GamePassEvent.Trigger();
             }
         }

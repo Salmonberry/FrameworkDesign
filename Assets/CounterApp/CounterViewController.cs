@@ -10,31 +10,27 @@ namespace CounterApp
 {
     public class CounterViewController : MonoBehaviour
     {
-       
-
-       
         void Start()
         {
-
-            //注册
+            // 瑷诲唺
             CounterModel.Count.OnValueChanged += OnCountChanged;
 
-            // Start is called before the first frame update
             transform.Find("BtnAdd").GetComponent<Button>().onClick.AddListener(() =>
             {
-                //交互逻辑
-                CounterModel.Count.Value++;
+                //浜や簰閭忚集
+                new AddCountCommand().Execute();
             });
 
             transform.Find("BtnSub").GetComponent<Button>().onClick.AddListener(() =>
             {
-                CounterModel.Count.Value--;
+                //浜や簰閭忚集
+                new SubCountCommand().Execute();
             });
 
             OnCountChanged(CounterModel.Count.Value);
         }
 
-        //表现逻辑
+        //琛ㄧ従閭忚集
         private void OnCountChanged(int newCount)
         {
             transform.Find("CountText").GetComponent<Text>().text = newCount.ToString();
@@ -42,10 +38,9 @@ namespace CounterApp
 
         private void OnDestroy()
         {
-            //注销
+            //瑷婚姺
             CounterModel.Count.OnValueChanged -= OnCountChanged;
         }
-
     }
 
     public static class CounterModel
@@ -54,7 +49,5 @@ namespace CounterApp
         {
             Value = 0,
         };
-
     }
 }
-
