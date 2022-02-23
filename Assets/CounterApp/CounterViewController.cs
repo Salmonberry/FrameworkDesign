@@ -1,7 +1,4 @@
 using FrameworkDesign;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +7,15 @@ namespace CounterApp
 {
     public class CounterViewController : MonoBehaviour
     {
+        private ICounterModel mCounterModel;
+
         void Start()
         {
+            //获取
+            mCounterModel = CounterApp.Get<ICounterModel>();
+
             // 註冊
-            CounterModel.Count.OnValueChanged += OnCountChanged;
+            mCounterModel.Count.OnValueChanged += OnCountChanged;
 
             transform.Find("BtnAdd").GetComponent<Button>().onClick.AddListener(() =>
             {
@@ -27,27 +29,32 @@ namespace CounterApp
                 new SubCountCommand().Execute();
             });
 
-            OnCountChanged(CounterModel.Count.Value);
+            OnCountChanged(mCounterModel.Count.Value);
         }
 
         //表現邏輯
-        private void OnCountChanged(int newCount)
+        private void OnCountChanged(int newValue)
         {
-            transform.Find("CountText").GetComponent<Text>().text = newCount.ToString();
+            transform.Find("CountText").GetComponent<Text>().text = newValue.ToString();
         }
 
         private void OnDestroy()
         {
             //註銷
-            CounterModel.Count.OnValueChanged -= OnCountChanged;
-        }
+           mCounterModel.Count.OnValueChanged -= OnCountChanged;
+
+            mCounterModel=null;        }
     }
 
-    public static class CounterModel
+    public interface ICounterModel
     {
-        public static BindableProperty<int> Count = new BindableProperty<int>()
-        {
-            Value = 0,
-        };
+        BindableProperty<int> Count { get;}
+    }
+
+
+    public class CounterModel:ICounterModel
+    {
+
+      public  BindableProperty<int> Count { get; } = new BindableProperty<int>() { Value = 0 };
     }
 }

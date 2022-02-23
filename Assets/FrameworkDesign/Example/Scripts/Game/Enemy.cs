@@ -6,12 +6,13 @@ public class Enemy : MonoBehaviour
 {
 
         /// <summary>
-        /// ����Լ�������
+        /// 点击自己则烧毁
         /// </summary>
      private void OnMouseDown() {
         Destroy(gameObject);
 
-            KilledOneEnemyEvent.Trigger();
+        //用Command
+        new  KillEnemyCommand().Execute();
 
         }
     }    

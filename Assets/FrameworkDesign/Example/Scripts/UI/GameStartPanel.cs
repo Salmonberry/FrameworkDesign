@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameStartPanel : MonoBehaviour
 {
     /// <summary>
-    /// Enemy�ĸ��ڵ�
+    /// Enemy的父节点
     /// </summary>
     public GameObject Enemies;
 
@@ -17,8 +17,9 @@ public class GameStartPanel : MonoBehaviour
         {
             gameObject.SetActive(false);
 
-            // �����¼�
-            GameStartEvent.Trigger();
+            // 发送 Command
+            new StartGameCommand()
+                .Execute();
           
         });
     }
