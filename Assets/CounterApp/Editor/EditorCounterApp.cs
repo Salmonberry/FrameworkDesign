@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,12 +6,16 @@ namespace CounterApp
     public class EditorCounterApp : EditorWindow
     {
         /// <summary>
-        /// ´ò¿ª´°¿Ú
+        /// æ‰“å¼€çª—å£
         /// </summary>
         [MenuItem("EditorCounterApp/Open")]
-       static void Open() { 
-            var editorCounterApp=GetWindow<EditorCounterApp>();
-            editorCounterApp.name=nameof(EditorCounterApp);
+        static void Open()
+        {
+            // éœ€è¦åœ¨è¿™é‡Œåˆ‡æ¢ä¸€ä¸‹ Storage çš„å®ç°
+            CounterApp.Register<IStorage>(new EditorPrefsStorage());
+        
+            var editorCounterApp = GetWindow<EditorCounterApp>();
+            editorCounterApp.name = nameof(EditorCounterApp);
             editorCounterApp.position = new Rect(100, 100, 400, 600);
             editorCounterApp.Show();
         }
@@ -22,17 +24,18 @@ namespace CounterApp
         {
             if (GUILayout.Button("+"))
             {
-                new AddCountCommand().Execute();
+                new AddCountCommand()
+                    .Execute();
             }
-
-            //ÓÉÓÚÊµÊ±Ë¢ĞÂ ËùÒÔÖ±½Ó¾ÍäÖÈ¾Êı¾İ¼´¿É
-            GUILayout.Label(CounterApp.Get<CounterModel>().Count.Value.ToString());
+        
+            //  ç”±äºå®æ—¶åˆ·æ–° æ‰€ä»¥ç›´æ¥å°±å°±æ¸²æŸ“æ•°æ®å³å¯
+            GUILayout.Label(CounterApp.Get<ICounterModel>().Count.Value.ToString());
 
             if (GUILayout.Button("-"))
             {
-                new SubCountCommand().Execute();
+                new SubCountCommand()
+                    .Execute();
             }
         }
     }
 }
-

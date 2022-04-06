@@ -5,15 +5,13 @@ using UnityEngine;
 
 namespace CounterApp
 {
-    public class CounterApp:Architecture<CounterApp>
+    public class CounterApp : Architecture<CounterApp>
     {
-
-        //ÕâÀï×¢²áÄ£¿é
         protected override void Init()
         {
-            Register<ICounterModel>(new CounterModel());
+            RegisterModel<ICounterModel>(new CounterModel());
+        
+            RegisterUtility<IStorage>(new PlayerPrefsStorage());
         }
-
     }
 }
-

@@ -20,7 +20,7 @@ namespace FrameworkDesign.Example
     public class GameModel:IGameModel
     {
         /// <summary>
-        /// ��Ϸ��״̬
+        /// 游戏的状态
         /// </summary>
         public  GameStates State = GameStates.NotStart;
 

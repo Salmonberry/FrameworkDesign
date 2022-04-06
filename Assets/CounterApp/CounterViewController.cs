@@ -41,20 +41,29 @@ namespace CounterApp
         private void OnDestroy()
         {
             //註銷
-           mCounterModel.Count.OnValueChanged -= OnCountChanged;
+            mCounterModel.Count.OnValueChanged -= OnCountChanged;
 
-            mCounterModel=null;        }
+            mCounterModel = null;
+        }
     }
 
-    public interface ICounterModel
+    public interface ICounterModel : IModel
     {
-        BindableProperty<int> Count { get;}
+        BindableProperty<int> Count { get; }
     }
 
 
-    public class CounterModel:ICounterModel
+    public class CounterModel : ICounterModel
     {
+        public void Init()
+        {
+            //通过Architrecture 获取
+            var storage = Architecture.GetUtility<IStorage>();
+            Count.Value = storage.LoadInt("COUNTER_COUNT", 0);
+            Count.OnValueChanged += count => { storage.SaveInt("COUNTER_COUNT", count); };
+        }
 
-      public  BindableProperty<int> Count { get; } = new BindableProperty<int>() { Value = 0 };
+        public BindableProperty<int> Count { get; } = new BindableProperty<int>() {Value = 0};
+        public IArchitecture Architecture { get; set; }
     }
 }

@@ -6,9 +6,8 @@ namespace FrameworkDesign.Example
         {
             var gameModel = PointGame.Get<IGameModel>();
 
-          gameModel.KillCount.Value++;
-
-            //十个全部消灭显示通关界面
+            gameModel.KillCount.Value++;
+            
             if (gameModel.KillCount.Value == 10)
             {
                 GamePassEvent.Trigger();
@@ -16,5 +15,3 @@ namespace FrameworkDesign.Example
         }
     }
 }
-
-

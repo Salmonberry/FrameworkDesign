@@ -7,15 +7,15 @@ namespace FrameworkDesign.Example
 {
     public class DIPExample : MonoBehaviour
     {
-        // 1.ÔOÓ‹Ä£‰K½Ó¿Ú
+        // 1. è®¾è®¡æ¨¡å—æ¥å£
         public interface IStorage
         {
             void SaveString(string key,string value);
             string LoadString(string key,string defaultValue="");
         }
 
-        //2.Œ¬F½Ó¿Ú
-        //ß\ĞĞ•r´æƒ¦
+        //2. å®ç°æ¥å£
+        //è¿è¡Œæ—¶å­˜å‚¨
         public class PlayerPrefsStorage : IStorage
         {
             
@@ -32,8 +32,8 @@ namespace FrameworkDesign.Example
         }
 
 
-        //3.Œ¬F½Ó¿Ú
-        //¾İ‹Æ÷´æƒ¦
+        // 3. å®ç°æ¥å£
+        // ç¼–è¾‘å™¨å­˜å‚¨
         public class EditorPrefsStorage : IStorage
         {
 
@@ -57,22 +57,22 @@ return ""
         }
 
 
-        //4.Ê¹ÓÃ
+        // 4. ä½¿ç”¨
         private void Start()
         {
-            //„“½¨Ò»‚€IOCÈİÆ÷
+            // åˆ›å»ºä¸€ä¸ª IOC å®¹å™¨
             var container=new IOCContainer();
 
-            //×¢ƒÔß\ĞĞ•rÄ£‰KµÄ
+            // æ³¨å†Œè¿è¡Œæ—¶æ¨¡å—
             container.Register<IStorage>(new PlayerPrefsStorage());
 
             var storage = container.Get<IStorage>();
 
-            storage.SaveString("name", "ß\ĞĞ•r´æƒ¦");
+            storage.SaveString("name", "è¿è¡Œæ—¶å­˜å‚¨");
 
             Debug.Log(storage.LoadString("name"));
 
-           //ÇĞ“QŒ¬F
+            // åˆ‡æ¢å®ç°
            container.Register<IStorage>(new EditorPrefsStorage());
 
             storage=container.Get<IStorage>();
