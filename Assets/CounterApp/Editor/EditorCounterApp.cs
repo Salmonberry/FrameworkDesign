@@ -12,8 +12,11 @@ namespace CounterApp
         static void Open()
         {
             // 需要在这里切换一下 Storage 的实现
-            CounterApp.Register<IStorage>(new EditorPrefsStorage());
-        
+            CounterApp.OnRegisterPatch += architecture =>
+            {
+                architecture.RegisterUtility<IStorage>(new EditorPrefsStorage());
+            };
+            
             var editorCounterApp = GetWindow<EditorCounterApp>();
             editorCounterApp.name = nameof(EditorCounterApp);
             editorCounterApp.position = new Rect(100, 100, 400, 600);

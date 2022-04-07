@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace FrameworkDesign
@@ -57,6 +58,12 @@ namespace FrameworkDesign
         }
     
         #region 类似单例模式 但是仅在内部课访问
+        
+        /// <summary>
+        /// 增加注册
+        /// </summary>
+        public static Action<T> OnRegisterPatch = architecture=> { };
+        
         private static T mArchitecture = null;
     
         // 确保 Container 是有实例的
@@ -66,6 +73,9 @@ namespace FrameworkDesign
             {
                 mArchitecture = new T();
                 mArchitecture.Init();
+                
+                // 调用
+                OnRegisterPatch?.Invoke(mArchitecture);
 
                 // 初始化 Model
                 foreach (var architectureModel in mArchitecture.mModels)

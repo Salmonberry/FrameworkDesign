@@ -21,7 +21,7 @@ namespace CounterApp
 
         public int LoadInt(string key, int defaultValue = 0)
         {
-            throw new System.NotImplementedException();
+            return PlayerPrefs.GetInt(key, defaultValue);
         }
     }
 
