@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace CounterApp
 {
-    public class CounterViewController : MonoBehaviour
+    public class CounterViewController : MonoBehaviour,IController
     {
         private ICounterModel mCounterModel;
 
@@ -45,6 +45,8 @@ namespace CounterApp
 
             mCounterModel = null;
         }
+
+        public IArchitecture Architecture { get; set; } = CounterApp.Interface;
     }
 
     public interface ICounterModel : IModel

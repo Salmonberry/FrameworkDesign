@@ -7,12 +7,12 @@ namespace FrameworkDesign
     public class IOCContainer
     {
         /// <summary>
-        /// ÊµÀý
+        /// 
         /// </summary>
         public Dictionary<Type, object> mInstances = new Dictionary<Type, object>();
 
         /// <summary>
-        /// ×¢²á
+        ///  
         /// </summary>
         /// <param name="instance"></param>
         /// <typeparam name="T"></typeparam>
