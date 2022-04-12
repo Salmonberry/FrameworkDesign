@@ -26,7 +26,7 @@ namespace CounterApp
             }
 
             //由于实时刷新 所以直接就渲染数据即可
-            GUILayout.Label(CounterApp.Get<CounterModel>().Count.Value.ToString());
+            GUILayout.Label(CounterApp.Get<ICounterModel>().Count.Value.ToString());
 
             if (GUILayout.Button("-"))
             {

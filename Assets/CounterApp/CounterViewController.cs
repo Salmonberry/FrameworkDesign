@@ -54,6 +54,17 @@ namespace CounterApp
 
     public class CounterModel:ICounterModel
     {
+        public CounterModel()
+        {
+            var storage = CounterApp.Get<IStorage>();
+
+            Count.Value = storage.LoadInt("COUNTER_COUNT", 0);
+
+            Count.OnValueChanged += count =>
+            {
+                storage.SaveInt("COUNTER_COUNT", count);
+            };
+        }
 
       public  BindableProperty<int> Count { get; } = new BindableProperty<int>() { Value = 0 };
     }
