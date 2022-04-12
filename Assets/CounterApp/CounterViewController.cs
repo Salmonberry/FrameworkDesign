@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace CounterApp
 {
-    public class CounterViewController : MonoBehaviour
+    public class CounterViewController : MonoBehaviour,IController
     {
         private ICounterModel mCounterModel;
 
@@ -41,31 +41,31 @@ namespace CounterApp
         private void OnDestroy()
         {
             //註銷
-           mCounterModel.Count.OnValueChanged -= OnCountChanged;
+            mCounterModel.Count.OnValueChanged -= OnCountChanged;
 
-            mCounterModel=null;        }
-    }
-
-    public interface ICounterModel
-    {
-        BindableProperty<int> Count { get;}
-    }
-
-
-    public class CounterModel:ICounterModel
-    {
-        public CounterModel()
-        {
-            var storage = CounterApp.Get<IStorage>();
-
-            Count.Value = storage.LoadInt("COUNTER_COUNT", 0);
-
-            Count.OnValueChanged += count =>
-            {
-                storage.SaveInt("COUNTER_COUNT", count);
-            };
+            mCounterModel = null;
         }
 
-      public  BindableProperty<int> Count { get; } = new BindableProperty<int>() { Value = 0 };
+        public IArchitecture Architecture { get; set; } = CounterApp.Interface;
+    }
+
+    public interface ICounterModel : IModel
+    {
+        BindableProperty<int> Count { get; }
+    }
+
+
+    public class CounterModel : ICounterModel
+    {
+        public void Init()
+        {
+            //通过Architrecture 获取
+            var storage = Architecture.GetUtility<IStorage>();
+            Count.Value = storage.LoadInt("COUNTER_COUNT", 0);
+            Count.OnValueChanged += count => { storage.SaveInt("COUNTER_COUNT", count); };
+        }
+
+        public BindableProperty<int> Count { get; } = new BindableProperty<int>() {Value = 0};
+        public IArchitecture Architecture { get; set; }
     }
 }

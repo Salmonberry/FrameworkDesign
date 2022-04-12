@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 using UnityEngine;
 
 namespace CounterApp
 {
     public interface IStorage
     {
-        void SaveInt(string key,int value);
-
-        int LoadInt(string key,int defaultValue=0);
-
+        void SaveInt(string key, int value);
+        int LoadInt(string key, int defaultValue = 0);
     }
 
     public class PlayerPrefsStorage : IStorage
@@ -40,9 +39,8 @@ namespace CounterApp
 #if UNITY_EDITOR
             return EditorPrefs.GetInt(key, defaultValue);
 #else
-            return 0;
+                return 0;
 #endif
         }
     }
-
 }

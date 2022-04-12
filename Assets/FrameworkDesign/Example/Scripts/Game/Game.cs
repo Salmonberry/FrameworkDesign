@@ -10,6 +10,7 @@ namespace FrameworkDesign.Example
         void Start()
         {
             GameStartEvent.Register(OnGameStart);
+            
       
         }
 
